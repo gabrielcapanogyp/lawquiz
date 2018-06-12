@@ -1,0 +1,10 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "alertifyjs": "^1.11.1",
+    "angular": "^1.6.10",
+    "bootstrap": "^4.1.1",
+    "jquery": "^1.9.1"
+  }
+}

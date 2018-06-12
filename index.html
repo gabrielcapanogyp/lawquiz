@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LawQuiz</title>
+    
+    <link rel="stylesheet" href="node_modules/alertifyjs/build/css/alertify.css">
+    <link rel="stylesheet" href="node_modules/alertifyjs/build/css/themes/bootstrap.css">
+    <script src="node_modules/alertifyjs/build/alertify.js"></script>
+    <script src="laws/civilCode.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="modules/app.js"></script>
+    <script src="modules/controllers/index.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body ng-app="lawQuiz">
+    <main role="main" class="container"  ng-controller="main.index as vm"   >
+        <h1 class="mt-5 text-center">Quiz Law!</h1>
+        <div ng-show="vm.currentLaw == null">
+                <p >Clique em inicar e comece o quiz!</p>
+        </div>
+        <div>
+            <div ng-if="vm.currentLaw != null">
+                <p class="lead">{{vm.currentLaw.text}}</p>
+                <p ng-repeat="child in vm.currentLaw.childrens">{{child}}</p>
+            </div>
+            <div class="actions" ng-if="vm.currentLaw != null">
+                <div class="form-group">
+                    <label for="lawNumber">Qual o número do artigo apresentado acima?</label>
+                    <input type="text" class="form-control" id="lawNumber" ng-model="vm.selectedLawNumber" placeholder="Digite o código">
+                </div>
+            </div>
+            <div class="actions text-center">
+                <button class="btn btn-primary" ng-click="vm.nextLaw()" ng-if="vm.currentLaw == null">Iniciar!</button>
+                <button class="btn btn-primary" ng-if="vm.currentLaw != null" ng-click="vm.validateLawNumber()">OK!</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
